@@ -1,0 +1,37 @@
+# Build output
+/build/
+/out/
+/bin/
+/lib/
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.obj
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+_deps/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+Debug/
+Release/
+x64/
+
+# Local, machine-specific config (real offsets / routes you don't want to publish)
+config/config.json
+config/offsets.json
+config/routes/*.json
+!config/routes/*.example.json
+
+# Editor
+.idea/
+*.swp

@@ -1,0 +1,48 @@
+{
+  "_comment": "Copy this file to config/config.json and fill in the real values. The DLL searches for config.json next to the DLL, then in the game directory, then at %HNBOT_CONFIG%. All offsets/patterns below are PLACEHOLDERS - see docs/FINDING_OFFSETS.md for how to find the real ones for your build with Cheat Engine or Dumper-7.",
+
+  "process_name": "HelloNeighbor-Win64-Shipping.exe",
+  "module_name": "HelloNeighbor-Win64-Shipping.exe",
+
+  "resolve": {
+    "_comment": "How to locate the GWorld global. mode='rva' uses module_base+rva. mode='pattern' AOB-scans the module; if rip_relative=true the 4-byte displacement at (match+pattern_offset) is resolved as a RIP-relative address using instruction_length.",
+    "gworld": {
+      "mode": "pattern",
+      "rva": "0x0",
+      "pattern": "48 8B 05 ? ? ? ? 48 3B 45 ? 74 ? 48 8B 05",
+      "pattern_offset": 3,
+      "instruction_length": 7,
+      "rip_relative": true
+    }
+  },
+
+  "player": {
+    "_comment": "Cheat Engine pointer chains, applied from the GWorld VARIABLE ADDRESS (module_base + resolved gworld). The first offset is usually 0x0 (deref GWorld to get the UWorld*). The last offset is the field offset of the value; it is NOT dereferenced. See docs/FINDING_OFFSETS.md.",
+    "location_chain": [ "0x0", "0x180", "0x38", "0x30", "0x250", "0x1A0", "0x130" ],
+    "velocity_chain": [],
+    "rotation_chain": []
+  },
+
+  "settings": {
+    "enable_overlay": true,
+    "enable_console": true,
+    "move_speed": 1500.0,
+    "arrival_tolerance": 150.0,
+    "default_mode": "teleport",
+    "teleport_step": 250.0,
+    "loop_route": false,
+    "tick_interval_ms": 8,
+    "hotkeys": {
+      "toggle_menu": "VK_INSERT",
+      "start": "VK_F5",
+      "stop": "VK_F6",
+      "pause": "VK_F7",
+      "capture_waypoint": "VK_F8",
+      "teleport_next": "VK_F9",
+      "reload_config": "VK_F10",
+      "unload": "VK_END"
+    }
+  },
+
+  "route_path": "config/routes/act1.example.json"
+}
